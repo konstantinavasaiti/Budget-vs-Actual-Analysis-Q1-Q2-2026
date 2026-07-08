@@ -1,12 +1,14 @@
 SELECT
     department_name,
-    COUNT(*) AS months_tracked,
-    SUM(CASE WHEN variance > 0 THEN 1 ELSE 0 END) AS months_over_budget,
-    SUM(CASE WHEN variance < 0 THEN 1 ELSE 0 END) AS months_under_budget
+    ROUND(total_budget, 2) AS total_budget,
+    ROUND(total_actual, 2) AS total_actual,
+    ROUND(variance, 2) AS variance,
+    ROUND(100.0 * variance / total_budget, 2) AS variance_pct
 FROM (
     SELECT
         d.department_name,
-        b.month,
+        SUM(b.budget_amount) AS total_budget,
+        SUM(a.actual_amount) AS total_actual,
         SUM(a.actual_amount) - SUM(b.budget_amount) AS variance
     FROM budgets b
     JOIN actuals a
@@ -14,7 +16,6 @@ FROM (
         AND b.category_id = a.category_id
         AND b.month = a.month
     JOIN departments d ON d.department_id = b.department_id
-    GROUP BY d.department_name, b.month
-) monthly_variance
-GROUP BY department_name
-ORDER BY months_over_budget DESC;
+    GROUP BY d.department_name
+) dept_totals
+ORDER BY variance_pct DESC;
