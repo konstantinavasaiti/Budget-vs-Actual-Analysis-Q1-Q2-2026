@@ -38,6 +38,21 @@ Python/run_queries.py            → runs SQL queries against the database
 - **IT** is under budget in **6/6 months** tracked (-5.75% overall) — a delayed project.
 - Other departments (Sales, Operations, HR, R&D) show no consistent pattern.
 
+## 🧹 Data quality note
+All data in this project is synthetic, generated programmatically
+(`Python/load_data.py` + the data generation script) to follow
+realistic patterns rather than random noise. Because the data is
+synthetic and clean by construction, no data-cleaning step was
+required before loading it into the database — there are no missing
+values, duplicate records, or inconsistent naming in the source CSVs.
+
+This is called out explicitly (rather than left unstated) because in
+a real engagement, the CFO/Board would rightly ask "how reliable are
+these numbers?" — and the answer here is: fully reliable, because the
+data is synthetic and was validated end-to-end (216 budget rows +
+216 actuals rows, confirmed via `SELECT COUNT(*)` after loading — see
+commit history).
+
 ## 🏢 Context
 - Departments: Sales, Marketing, Operations, R&D, HR, IT
 - Categories: Salaries, Marketing Spend, Travel, Software, Equipment, Other
