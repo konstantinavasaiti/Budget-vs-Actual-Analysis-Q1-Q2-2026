@@ -1,0 +1,218 @@
+department,category,month,actual_amount
+IT ,Travel,2026-06,1036.73
+IT ,Software,2026-06,8041.3
+HR,Salaries,2026-05,27699.48
+IT ,Software,2026-01,7723.8
+Sales,Other,2026-05,1420.73
+R&D,Salaries,2026-06,60604.74
+IT ,Other,2026-02,1058.56
+R&D,Software,2026-06,5178.72
+operations,Software,2026-06,1789.02
+Sales,Travel,2026-02,6235.33
+operations,Marketing Spend,2026-02,0.0
+Sales,Salaries,2026-01,44048.7€
+Marketing ,Travel,2026-01,3082.6
+Marketing ,Equipment,2026-01,836.05
+operations,Equipment,2026-01,4023.73
+operations,Marketing Spend,2026-04,0.0
+IT ,Travel,2026-02,966.77
+operations,Travel,2026-03,
+operations,Software,2026-03,1776.45
+Sales,Marketing Spend,2026-05,1896.77
+operations,Marketing Spend,2026-03,0.0
+HR,Salaries,2026-02,26527.42
+IT ,Software,2026-02,7279.06
+operations,Software,2026-05,1709.41
+Marketing ,Marketing Spend,2026-01,26383.14
+IT ,Travel,2026-05,1042.32
+R&D,Software,2026-02,4732.4
+Marketing ,Other,2026-05,1136.74
+Marketing ,Marketing Spend,2026-06,40969.22
+Marketing ,Travel,2026-05,
+operations,Equipment,2026-05,3893.64
+operations,Marketing Spend,2026-05,0.0
+R&D,Marketing Spend,2026-02,0.0
+R&D,Equipment,2026-04,6096.69
+Sales,Marketing Spend,2026-06,1901.77
+Sales,Salaries,2026-03,46181.57
+operations,Salaries,2026-04,49292.06
+Sales,Travel,2026-05,6691.75
+Marketing ,Software,2026-05,2579.37
+Sales,Marketing Spend,2026-01,1893.92
+HR,Salaries,2026-04,28475.41
+HR,Software,2026-04,1094.72
+R&D,Other,2026-04,1419.46
+operations,Salaries,2026-05,50103.78
+R&D,Salaries,2026-03,61126.82
+HR,Other,2026-05,1003.6
+IT ,Marketing Spend,2026-02,0.0
+operations,Travel,2026-01,1885.42
+R&D,Software,2026-01,5105.72€
+R&D,Other,2026-05,1410.04
+IT ,Equipment,2026-02,9042.36
+operations,Other,2026-02,2092.21
+Sales,Equipment,2026-06,1009.79
+operations,Other,2026-05,1922.29
+IT ,Travel,2026-03,1037.38
+R&D,Other,2026-01,1447.58
+Sales,Software,2026-06,1462.13
+HR,Other,2026-03,963.37
+R&D,Travel,2026-05,1502.79
+Marketing ,Other,2026-02,1264.03
+IT ,Other,2026-01,1052.44
+operations,Salaries,2026-01,50882.77
+HR,Equipment,2026-04,507.06€
+IT ,Marketing Spend,2026-06,0.0
+IT ,Equipment,2026-04,9877.23
+operations,Other,2026-03,2109.86
+Marketing ,Software,2026-02,2496.69
+Marketing ,Other,2026-04,1223.64
+operations,Salaries,2026-02,53170.41
+Sales,Software,2026-03,1585.73
+Marketing ,Equipment,2026-03,818.75
+IT ,Equipment,2026-06,11324.01
+IT ,Equipment,2026-03,8653.21
+Sales,Equipment,2026-05,961.69
+Marketing ,Software,2026-06,2521.91
+operations,Software,2026-04,1880.23
+IT ,Travel,2026-04,1058.19
+Sales,Software,2026-01,1513.88
+IT ,Salaries,2026-04,43891.01
+Sales,Software,2026-02,1481.4
+operations,Software,2026-02,1745.48€
+R&D,Equipment,2026-06,5688.49
+R&D,Software,2026-04,5167.98
+operations,Travel,2026-04,1908.1
+HR,Software,2026-02,1149.67
+R&D,Equipment,2026-02,5927.26
+IT ,Software,2026-04,7219.05
+Sales,Marketing Spend,2026-04,1984.07
+IT ,Equipment,2026-05,10857.38€
+R&D,Marketing Spend,2026-03,0.0
+Marketing ,Travel,2026-03,
+HR,Travel,2026-04,731.79
+Marketing ,Travel,2026-06,3092.57
+Sales,Travel,2026-06,9922.35
+operations,Other,2026-04,1916.22
+R&D,Salaries,2026-01,58080.02
+IT ,Marketing Spend,2026-01,0.0
+HR,Salaries,2026-03,25487.97
+HR,Travel,2026-02,753.35
+HR,Other,2026-06,983.54
+Sales,Other,2026-02,1477.03
+IT ,Salaries,2026-01,40796.02
+HR,Travel,2026-05,801.5€
+Marketing ,Other,2026-03,1196.27
+R&D,Salaries,2026-02,60131.3
+R&D,Travel,2026-01,1476.47
+R&D,Travel,2026-06,1521.17
+operations,Travel,2026-05,1894.15
+Sales,Equipment,2026-02,954.14
+Marketing ,Equipment,2026-06,795.8
+operations,Salaries,2026-06,52032.15
+R&D,Other,2026-06,1437.23
+operations,Marketing Spend,2026-01,0.0
+Marketing ,Salaries,2026-06,31855.73
+Marketing ,Software,2026-03,2361.76
+Sales,Marketing Spend,2026-03,1889.0
+R&D,Marketing Spend,2026-01,0.0
+operations,Equipment,2026-02,4504.02
+HR,Equipment,2026-06,458.8
+Marketing ,Other,2026-06,1229.01
+Marketing ,Software,2026-04,2550.46
+HR,Software,2026-02,1149.67
+Sales,Travel,2026-01,5945.65
+operations,Equipment,2026-03,5953.25
+HR,Other,2026-01,965.18
+IT ,Other,2026-05,966.46
+Sales,Equipment,2026-01,957.31
+Marketing ,Equipment,2026-04,809.06
+Sales,Travel,2026-03,5729.14
+Sales,Equipment,2026-04,1037.94
+R&D,Travel,2026-04,
+HR,Travel,2026-03,754.96
+HR,Marketing Spend,2026-04,0.0
+IT ,Other,2026-03,1054.6
+IT ,Salaries,2026-02,41493.48
+Marketing ,Salaries,2026-01,32692.74
+Marketing ,Marketing Spend,2026-03,27232.29
+HR,Salaries,2026-01,25540.92
+Sales,Salaries,2026-02,43287.04
+Marketing ,Marketing Spend,2026-05,37461.93
+R&D,Salaries,2026-05,57332.35
+Sales,Salaries,2026-05,45916.86
+R&D,Software,2026-05,5224.71
+HR,Equipment,2026-03,451.39
+IT ,Marketing Spend,2026-03,0.0
+R&D,Equipment,2026-05,5684.82
+HR,Marketing Spend,2026-05,0.0
+HR,Travel,2026-06,815.34
+HR,Marketing Spend,2026-06,0.0
+R&D,Equipment,2026-01,5922.51
+HR,Salaries,2026-06,26213.11
+R&D,Marketing Spend,2026-04,0.0
+operations,Software,2026-01,1719.94
+Sales,Travel,2026-04,5800.73
+HR,Other,2026-02,903.25
+operations,Other,2026-06,1935.67
+R&D,Other,2026-02,1439.21
+Marketing ,Other,2026-01,1248.96
+operations,Marketing Spend,2026-06,0.0
+HR,Marketing Spend,2026-01,0.0
+Marketing ,Equipment,2026-02,782.12
+R&D,Software,2026-03,5239.72
+operations,Salaries,2026-03,52347.0
+HR,Equipment,2026-05,481.7
+Marketing ,Equipment,2026-05,807.67
+IT ,Marketing Spend,2026-04,0.0
+Marketing ,Software,2026-01,2395.6
+Marketing ,Travel,2026-02,2923.66
+IT ,Equipment,2026-01,9160.23
+Sales,Other,2026-06,1447.07
+R&D,Equipment,2026-03,5714.55
+Sales,Equipment,2026-03,977.02
+HR,Software,2026-05,1129.34
+Sales,Salaries,2026-04,43203.45
+Sales,Salaries,2026-06,45160.21
+Sales,Other,2026-04,1421.3
+HR,Other,2026-04,1017.42
+R&D,Other,2026-03,1471.21
+Marketing ,Salaries,2026-04,32716.5
+operations,Travel,2026-06,2064.38
+HR,Equipment,2026-01,499.73
+R&D,Travel,2026-02,1511.94
+HR,Marketing Spend,2026-03,0.0
+HR,Travel,2026-01,744.22
+Marketing ,Salaries,2026-02,31848.84
+HR,Software,2026-06,1118.12
+R&D,Marketing Spend,2026-06,0.0
+HR,Marketing Spend,2026-02,0.0
+Marketing ,Salaries,2026-03,31536.62
+Sales,Marketing Spend,2026-02,2001.78
+Sales,Other,2026-03,1508.59
+Marketing ,Marketing Spend,2026-02,26846.98
+Marketing ,Salaries,2026-05,32329.35
+IT ,Salaries,2026-06,44274.57
+IT ,Other,2026-06,967.22
+IT ,Marketing Spend,2026-05,0.0
+operations,Other,2026-01,1966.11
+R&D,Marketing Spend,2026-05,0.0
+operations,Equipment,2026-06,3959.34
+IT ,Salaries,2026-05,42838.89
+Sales,Software,2026-05,1564.52
+operations,Travel,2026-02,1990.81
+HR,Software,2026-01,1147.1
+IT ,Software,2026-05,7494.01
+R&D,Salaries,2026-04,58991.28
+Marketing ,Marketing Spend,2026-04,35331.76
+R&D,Travel,2026-03,1581.56
+Marketing ,Travel,2026-04,2862.5
+IT ,Travel,2026-01,979.56
+IT ,Salaries,2026-03,40644.47
+IT ,Software,2026-03,6454.88
+operations,Equipment,2026-04,4174.71
+Sales,Other,2026-01,1525.0
+HR,Equipment,2026-02,459.69
+IT ,Other,2026-04,983.76
+Sales,Software,2026-04,1418.38
+HR,Software,2026-03,1092.37
