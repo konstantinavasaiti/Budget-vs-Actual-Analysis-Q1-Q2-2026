@@ -91,6 +91,12 @@ visible before cleaning, and the Marketing Spend overspend grew from
 +15.41% to **+20.45%**. This is a concrete illustration of why cleaning
 must happen before, not after, drawing conclusions from the data.
 
+**Note on row count:** the raw export includes all 36 department×category
+combinations explicitly (6 departments × 6 categories × 6 months = 216
+base rows), even the 4 combinations with zero budget (e.g. HR/Marketing
+Spend), recorded as €0.00 rather than omitted — plus 1 duplicate = 217
+raw rows total. Verified via `df.groupby(['department','category']).size()`.
+
 ## 🏢 Context
 - Departments: Sales, Marketing, Operations, R&D, HR, IT
 - Categories: Salaries, Marketing Spend, Travel, Software, Equipment, Other
