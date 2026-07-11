@@ -53,6 +53,44 @@ data is synthetic and was validated end-to-end (216 budget rows +
 216 actuals rows, confirmed via `SELECT COUNT(*)` after loading — see
 commit history).
 
+## 🧹 Data Cleaning
+
+The raw actuals export (`data/raw/actuals_2026_H1_raw.csv`) simulates a
+real ERP export with intentional data quality issues. Diagnosed and
+resolved in `Python/clean_data.py`, with each step counted and verified
+before/after:
+
+**1. Inconsistent department names**
+Raw file contained 6 unique values for department, but 3 were malformed:
+`'IT '` (trailing space), `'operations'` (lowercase), `'Marketing '`
+(trailing space). Fixed via an explicit mapping (not `.str.title()`,
+which incorrectly turns acronyms like "HR"/"IT" into "Hr"/"It").
+Verified via `repr()` and `len()` checks on each unique value.
+
+**2. Row count / duplicate**
+217 rows in the raw file (expected 216). One fully duplicated row was
+found via `.duplicated()` and removed — kept the first occurrence only.
+
+**3. Missing values**
+4 rows had a blank `actual_amount` (unrecorded invoices at export time).
+These were **dropped**, not imputed with 0 or an average — the true
+value is unknown, and guessing it would misrepresent actual spend.
+
+**4. Currency symbols**
+Some amounts were stored as strings with a trailing `€` (e.g. `"44048.7€"`).
+Stripped the symbol and converted to numeric via `pd.to_numeric(errors="coerce")`.
+
+**Result:** 217 raw rows → **212 clean rows** used in the final analysis
+(`data/processed/actuals_2026_H1_clean.csv`).
+
+**Impact on findings:** re-running the variance analysis on the cleaned
+data (vs. the earlier, already-clean synthetic dataset) changed several
+numbers meaningfully — most notably, **HR/Salaries (-5.74%)** and
+**HR/Software (-6.51%)** emerged as significant deviations that were not
+visible before cleaning, and the Marketing Spend overspend grew from
++15.41% to **+20.45%**. This is a concrete illustration of why cleaning
+must happen before, not after, drawing conclusions from the data.
+
 ## 🏢 Context
 - Departments: Sales, Marketing, Operations, R&D, HR, IT
 - Categories: Salaries, Marketing Spend, Travel, Software, Equipment, Other
