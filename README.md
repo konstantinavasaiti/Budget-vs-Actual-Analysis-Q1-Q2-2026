@@ -29,7 +29,7 @@ Python/run_queries.py            → runs SQL queries against the database
   - [x] Monthly trend per department
   - [x] Consistently over/under budget detection
   - [x] Variance ranking (%)
-- [ ] 🐍 Python variance analysis & forecast
+- [x] 🐍 Python variance analysis & forecast
 - [ ] 📊 Power BI interactive dashboard
 - [ ] 📽️ Executive summary (PowerPoint) for the Board
 
