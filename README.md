@@ -12,7 +12,7 @@ The project demonstrates the complete analytics workflow—from synthetic data g
 
 ## Overview Dashboard
 
-![Overview Dashboard](screenshots/overview.png)
+![Overview Dashboard](screenshots/Overview.png)
 
 ---
 
@@ -80,11 +80,11 @@ The interactive dashboard was developed using a **star schema** model and includ
 
 ## Trend Analysis
 
-![Trend Analysis](screenshots/trend.png)
+![Trend Analysis](screenshots/Trend.png)
 
 ## Threshold Alerts
 
-![Threshold Alerts](screenshots/threshold.png)
+![Threshold Alerts](screenshots/Threshold.png)
 
 ---
 
@@ -103,7 +103,7 @@ Presentation contents:
 
 ## Presentation Preview
 
-![Executive Presentation](screenshots/presentation_cover.png)
+![Executive Presentation](screenshots/Presentation_cover.png)
 
 ---
 
