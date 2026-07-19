@@ -1,10 +1,18 @@
-# 📊 Budget vs Actual Analysis Q1–Q2 2026
+# 📊 Budget vs Actual Analysis (H1 2026)
 
-End-to-end FP&A analytics project simulating a real-world **Budget vs Actual** analysis for a mid-size retail/manufacturing company.
+An end-to-end FP&A analytics project simulating a real-world **Budget vs Actual** analysis for a mid-size retail/manufacturing company.
 
-The project covers the complete analytics workflow—from data generation and cleaning to SQL modeling, Python analysis, and an interactive Power BI dashboard.
+The project demonstrates the complete analytics workflow—from synthetic data generation and validation to SQL modeling, Python analysis, interactive Power BI reporting, and an executive PowerPoint presentation.
 
-> ⚠️ **Note:** All data is synthetic, designed to follow realistic business patterns. No real company data is used.
+> ⚠️ **Note:** All data used in this project is synthetic and was generated to follow realistic business patterns. No real company data is included.
+
+---
+
+# 📸 Dashboard Preview
+
+## Overview Dashboard
+
+![Overview Dashboard](screenshots/overview.png)
 
 ---
 
@@ -15,7 +23,7 @@ The project covers the complete analytics workflow—from data generation and cl
 - ✅ Data cleaning & validation
 - ✅ Python variance analysis
 - ✅ Power BI interactive dashboard
-- 🔄 Executive PowerPoint presentation (in progress)
+- ✅ Executive PowerPoint presentation
 
 ---
 
@@ -25,94 +33,77 @@ The project covers the complete analytics workflow—from data generation and cl
 data/
 ├── raw/
 │   ├── budget_2026.csv
-│   ├── actuals_2026.csv
-│   └── actuals_2026_H1_raw.csv
+│   ├── actuals_2026_H1_raw.csv
+│   └── actuals_2026.csv
 │
 ├── processed/
 │   ├── actuals_2026_H1_clean.csv
 │   └── budget_actual.db
-
+│
 SQL/
 ├── 01_schema.sql
 ├── 02_seed_data.sql
 └── 03_variance_queries.sql
-
+│
 Python/
 ├── clean_data.py
 ├── load_data.py
 └── run_queries.py
-
+│
 Power BI/
-└── Budget_Performance_Dashboard.pbix
+└── Budget_Analysis_Dashboard.pbix
+│
+PowerPoint/
+└── Budget_vs_Actual_Executive_Presentation.pptx
+│
+screenshots/
+├── overview.png
+├── trend.png
+├── threshold.png
+└── presentation_cover.png
+│
+README.md
 ```
 
 ---
 
 # 📊 Power BI Dashboard
 
-The interactive dashboard was built using a **star schema** data model and includes:
+The interactive dashboard was developed using a **star schema** model and includes:
 
 - Executive KPI cards
-- Department variance analysis
-- Monthly variance trends
-- Department & category drill-down
-- Threshold alert report (±5%)
-- Interactive filtering and drill-through navigation
+- Monthly trend analysis
+- Department & category analysis
+- Threshold alerts (±5% variance)
+- Interactive filtering
+- Custom tooltips
 
-> *(Dashboard screenshot here)*
+## Trend Analysis
 
----
+![Trend Analysis](screenshots/trend.png)
 
-# 🗺️ Project Roadmap
+## Threshold Alerts
 
-- ✅ Raw data generation
-- ✅ SQL data model
-- ✅ Data cleaning & validation
-- ✅ Python analysis
-- ✅ Power BI dashboard
-- 🔄 Executive PowerPoint presentation
+![Threshold Alerts](screenshots/threshold.png)
 
 ---
 
-# 🔎 Key Findings
+# 📽️ Executive Presentation
 
-- Marketing remained over budget throughout the six-month period (+6.78% overall), indicating sustained campaign overspending.
-- IT remained under budget (-5.75% overall), primarily due to delayed software and equipment investments.
-- Seven department-category combinations exceeded the ±5% variance threshold.
-- Sales, Operations, HR, and R&D remained broadly aligned with planned spending, with only isolated category-level deviations.
+The project includes an executive PowerPoint presentation designed for senior management.
 
----
+Presentation contents:
 
-# 🧹 Data Cleaning
+- Business Objective
+- Executive Summary
+- Trend Analysis
+- Threshold Alerts
+- Business Recommendations
+- Lessons Learned
 
-The raw ERP export (`actuals_2026_H1_raw.csv`) intentionally contains realistic data quality issues to simulate a production environment.
+## Presentation Preview
 
-Cleaning steps included:
-
-- Standardizing inconsistent department names
-- Removing duplicate records
-- Dropping incomplete transactions
-- Converting currency-formatted text into numeric values
-
-Result:
-
-**193 raw rows → 188 clean rows**
-
-used throughout the final SQL, Python and Power BI analysis.
-
----
-
-# ✅ Row Count Verification
-
-The raw dataset was independently verified before cleaning using multiple validation methods (`wc -l`, `len(df)` and grouped record counts).
-
-After cleaning:
-
-- Duplicate records removed
-- Missing actual values excluded
-- Final dataset validated before loading into SQLite and Power BI
-
-This audit trail mirrors the validation process expected in real FP&A projects.
+![Executive Presentation](screenshots/presentation_cover.png)
 
 ---
 
@@ -122,8 +113,8 @@ The Power BI report follows a **star schema** consisting of:
 
 ### Fact Tables
 
-- Budget
-- Actual
+- Fact Budget
+- Fact Actuals
 
 ### Dimension Tables
 
@@ -135,13 +126,49 @@ Relationships are configured as **many-to-one** to support efficient filtering a
 
 ---
 
-# ⚠️ Power BI Implementation Note
+# 🔎 Key Findings
 
-During dashboard development, imported numeric values were initially interpreted using an incorrect locale, resulting in financial amounts approximately ten times larger than expected.
+The analysis identified several significant Budget vs Actual variances during H1 2026.
 
-The issue was identified by validating imported values against the cleaned CSV source and resolved using the correct import locale.
+Highlights include:
 
-This reinforces the importance of validating imported financial data before performing analysis.
+- Marketing consistently exceeded budget due to campaign spending.
+- IT remained below budget because of delayed software and equipment investments.
+- Multiple department-category combinations exceeded the predefined ±5% management threshold.
+- Overall company spending remained close to the planned budget despite isolated exceptions.
+
+---
+
+# 🧹 Data Cleaning & Validation
+
+The raw ERP export intentionally included realistic data-quality issues to simulate a production environment.
+
+Cleaning activities included:
+
+- Standardizing inconsistent department names
+- Removing duplicate records
+- Removing incomplete transactions
+- Converting currency-formatted text into numeric values
+
+Final result:
+
+**193 raw records → 188 validated records**
+
+used throughout SQL, Python, Power BI, and the executive presentation.
+
+---
+
+# ✅ Data Validation
+
+To ensure data integrity, validation was performed before analysis.
+
+Verification included:
+
+- Raw row-count verification
+- Duplicate detection
+- Missing-value validation
+- SQLite row-count confirmation
+- Cross-checking imported Power BI values against the cleaned dataset
 
 ---
 
@@ -155,12 +182,13 @@ This reinforces the importance of validating imported financial data before perf
 - DAX
 - Git
 - GitHub
+- Microsoft PowerPoint
 
 ---
 
 # 🏢 Business Context
 
-**Departments**
+### Departments
 
 - Sales
 - Marketing
@@ -169,7 +197,7 @@ This reinforces the importance of validating imported financial data before perf
 - HR
 - IT
 
-**Categories**
+### Categories
 
 - Salaries
 - Marketing Spend
@@ -178,20 +206,31 @@ This reinforces the importance of validating imported financial data before perf
 - Equipment
 - Other
 
-**Reporting Period**
+### Reporting Period
 
-January – June 2026
+**January – June 2026**
 
 ---
 
 # 📚 Lessons Learned
 
-This project strengthened practical FP&A and analytics skills, including:
+This project strengthened practical FP&A and Business Intelligence skills, including:
 
-- Data validation before analysis
-- Documenting data-cleaning decisions
-- Building reusable SQL queries
-- Designing a star schema
+- Building an end-to-end financial analytics workflow
+- Validating financial datasets before reporting
+- Designing a star schema for analytical reporting
+- Writing reusable SQL queries
 - Developing DAX measures
-- Creating interactive executive dashboards
-- Communicating financial insights through business-oriented reporting
+- Creating interactive Power BI dashboards
+- Translating analytical findings into business recommendations
+- Presenting results in an executive-friendly format
+
+---
+
+# 🎯 Project Outcome
+
+This portfolio project demonstrates the complete FP&A reporting lifecycle:
+
+**Raw Data → Data Cleaning → SQL → Python → Power BI → Executive Presentation**
+
+It showcases both technical implementation and business communication skills commonly required in Financial Planning & Analysis (FP&A) and Business Intelligence roles.
