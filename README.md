@@ -1,116 +1,197 @@
-# 📊 Budget vs Actual Analysis Q1-Q2 2026
+# 📊 Budget vs Actual Analysis Q1–Q2 2026
 
-End-to-end FP&A analytics project: SQL data model, Python analysis,
-Power BI dashboard, and executive PowerPoint summary — simulating a
-real Budget vs Actual assignment for a mid-size retail/manufacturing
-company (Jan-Jun 2026, 6 departments).
+End-to-end FP&A analytics project simulating a real-world **Budget vs Actual** analysis for a mid-size retail/manufacturing company.
 
-> ⚠️ **Note:** all data is synthetic, built to follow realistic patterns
-> (not random). No real company data is used.
+The project covers the complete analytics workflow—from data generation and cleaning to SQL modeling, Python analysis, and an interactive Power BI dashboard.
 
-## 🚧 Status
-Milestone 1 (Data Foundation) complete. Starting Milestone 2 (Python analysis & forecast).
+> ⚠️ **Note:** All data is synthetic, designed to follow realistic business patterns. No real company data is used.
 
-## 📁 Structure so far
+---
 
-data/raw/budget_2026.csv         → budgeted amount per department/category/month
-data/raw/actuals_2026.csv        → actual amount per department/category/month
-data/processed/budget_actual.db  → SQLite database with loaded data
-SQL/01_schema.sql                → database schema (departments, categories, budgets, actuals)
-SQL/02_seed_data.sql             → departments & categories reference data
-SQL/03_variance_queries.sql      → variance analysis queries
-Python/load_data.py              → loads CSV data into the database
-Python/run_queries.py            → runs SQL queries against the database
+# 🚧 Project Status
 
-## 🗺️ Roadmap
-- [x] 📥 Raw data (budget + actuals, Jan-Jun 2026)
-- [x] 🗄️ SQL schema & variance queries
-  - [x] Overall variance per department
-  - [x] Monthly trend per department
-  - [x] Consistently over/under budget detection
-  - [x] Variance ranking (%)
-- [x] 🐍 Python variance analysis & forecast
-- [x] 📊 Power BI interactive dashboard
-- [ ] 📽️ Executive summary (PowerPoint) for the Board
+- ✅ Data generation
+- ✅ SQL database & variance queries
+- ✅ Data cleaning & validation
+- ✅ Python variance analysis
+- ✅ Power BI interactive dashboard
+- 🔄 Executive PowerPoint presentation (in progress)
 
-## 🔎 Key findings so far
-- **Marketing** is over budget in **6/6 months** tracked (+6.78% overall) — a campaign that progressively overspent.
-- **IT** is under budget in **6/6 months** tracked (-5.75% overall) — a delayed project.
-- Other departments (Sales, Operations, HR, R&D) show no consistent pattern.
+---
 
-## 🧹 Data quality note
-All data in this project is synthetic, generated programmatically
-(`Python/load_data.py` + the data generation script) to follow
-realistic patterns rather than random noise. Because the data is
-synthetic and clean by construction, no data-cleaning step was
-required before loading it into the database — there are no missing
-values, duplicate records, or inconsistent naming in the source CSVs.
+# 📁 Project Structure
 
-This is called out explicitly (rather than left unstated) because in
-a real engagement, the CFO/Board would rightly ask "how reliable are
-these numbers?" — and the answer here is: fully reliable, because the
-data is synthetic and was validated end-to-end (216 budget rows +
-216 actuals rows, confirmed via `SELECT COUNT(*)` after loading — see
-commit history).
+```text
+data/
+├── raw/
+│   ├── budget_2026.csv
+│   ├── actuals_2026.csv
+│   └── actuals_2026_H1_raw.csv
+│
+├── processed/
+│   ├── actuals_2026_H1_clean.csv
+│   └── budget_actual.db
 
-## 🧹 Data Cleaning
+SQL/
+├── 01_schema.sql
+├── 02_seed_data.sql
+└── 03_variance_queries.sql
 
-The raw actuals export (`data/raw/actuals_2026_H1_raw.csv`) simulates a
-real ERP export with intentional data quality issues. Diagnosed and
-resolved in `Python/clean_data.py`, with each step counted and verified
-before/after — including a raw-file recount after an initial mismatch
-was flagged during review (see "Row count verification" below).
+Python/
+├── clean_data.py
+├── load_data.py
+└── run_queries.py
 
-**Note on row count:** the raw export includes only the 32 valid
-department×category combinations (6 departments × 6 categories, minus
-the 4 combinations with zero base budget, e.g. HR/Marketing Spend,
-which are omitted entirely rather than recorded as €0.00). 32 combos ×
-6 months = 192 base rows + 1 duplicate = **193 raw rows**. Verified via
-`wc -l` and `df.groupby(['department','category']).size()` directly on
-the source file.
+Power BI/
+└── Budget_Performance_Dashboard.pbix
+```
 
-**1. Inconsistent department names**
-6 unique values for department, but 3 were malformed: `'IT '` (trailing
-space), `'operations'` (lowercase), `'Marketing '` (trailing space).
-Fixed via an explicit mapping (not `.str.title()`, which incorrectly
-turns acronyms like "HR"/"IT" into "Hr"/"It"). Verified via `repr()`
-and `len()` checks on each unique value.
+---
 
-**2. Duplicate row**
-One fully duplicated row was found via `.duplicated()` and removed —
-kept the first occurrence only.
+# 📊 Power BI Dashboard
 
-**3. Missing values**
-4 rows had a blank `actual_amount` (unrecorded invoices at export time).
-These were **dropped**, not imputed with 0 or an average — the true
-value is unknown, and guessing it would misrepresent actual spend.
+The interactive dashboard was built using a **star schema** data model and includes:
 
-**4. Currency symbols**
-Some amounts were stored as strings with a trailing `€` (e.g. `"44048.7€"`).
-Stripped the symbol and converted to numeric via `pd.to_numeric(errors="coerce")`.
+- Executive KPI cards
+- Department variance analysis
+- Monthly variance trends
+- Department & category drill-down
+- Threshold alert report (±5%)
+- Interactive filtering and drill-through navigation
 
-**Result:** 193 raw rows → **188 clean rows** used in the final analysis
-(`data/processed/actuals_2026_H1_clean.csv`).
+> *(Dashboard screenshot here)*
 
-**Row count verification:** an initial cleaning pass was run against a
-version of the raw file that included the 4 zero-budget combinations
-explicitly (yielding 217 raw rows). This was flagged during review as
-inconsistent with how the source file was actually built, re-verified
-directly against the raw file (`wc -l`, `len(df)`,
-`groupby(['department','category']).size()`), and corrected — the raw
-file was regenerated to omit zero-budget combinations entirely (193
-rows), and the full pipeline (cleaning → load → analysis) was re-run
-against the corrected source.
+---
 
-**Impact on findings:** the significant deviations (±5% threshold) are
-consistent across both versions of the cleaning pass — Marketing/Marketing
-Spend (+20.45%), Sales/Travel (+12.01%), Operations/Equipment (+10.45%),
-HR/Salaries (-5.74%), HR/Software (-6.51%), IT/Software (-18.13%), and
-IT/Equipment (-18.17%). Two of these — HR/Salaries and HR/Software —
-only became visible after proper cleaning; they were not flagged in the
-earlier, uncleaned synthetic dataset.
+# 🗺️ Project Roadmap
 
-## 🏢 Context
-- Departments: Sales, Marketing, Operations, R&D, HR, IT
-- Categories: Salaries, Marketing Spend, Travel, Software, Equipment, Other
-- Period: January–June 2026
+- ✅ Raw data generation
+- ✅ SQL data model
+- ✅ Data cleaning & validation
+- ✅ Python analysis
+- ✅ Power BI dashboard
+- 🔄 Executive PowerPoint presentation
+
+---
+
+# 🔎 Key Findings
+
+- Marketing remained over budget throughout the six-month period (+6.78% overall), indicating sustained campaign overspending.
+- IT remained under budget (-5.75% overall), primarily due to delayed software and equipment investments.
+- Seven department-category combinations exceeded the ±5% variance threshold.
+- Sales, Operations, HR, and R&D remained broadly aligned with planned spending, with only isolated category-level deviations.
+
+---
+
+# 🧹 Data Cleaning
+
+The raw ERP export (`actuals_2026_H1_raw.csv`) intentionally contains realistic data quality issues to simulate a production environment.
+
+Cleaning steps included:
+
+- Standardizing inconsistent department names
+- Removing duplicate records
+- Dropping incomplete transactions
+- Converting currency-formatted text into numeric values
+
+Result:
+
+**193 raw rows → 188 clean rows**
+
+used throughout the final SQL, Python and Power BI analysis.
+
+---
+
+# ✅ Row Count Verification
+
+The raw dataset was independently verified before cleaning using multiple validation methods (`wc -l`, `len(df)` and grouped record counts).
+
+After cleaning:
+
+- Duplicate records removed
+- Missing actual values excluded
+- Final dataset validated before loading into SQLite and Power BI
+
+This audit trail mirrors the validation process expected in real FP&A projects.
+
+---
+
+# 🏗️ Data Model
+
+The Power BI report follows a **star schema** consisting of:
+
+### Fact Tables
+
+- Budget
+- Actual
+
+### Dimension Tables
+
+- Department
+- Category
+- Date
+
+Relationships are configured as **many-to-one** to support efficient filtering and reporting.
+
+---
+
+# ⚠️ Power BI Implementation Note
+
+During dashboard development, imported numeric values were initially interpreted using an incorrect locale, resulting in financial amounts approximately ten times larger than expected.
+
+The issue was identified by validating imported values against the cleaned CSV source and resolved using the correct import locale.
+
+This reinforces the importance of validating imported financial data before performing analysis.
+
+---
+
+# 🛠️ Tools & Technologies
+
+- Python
+- Pandas
+- SQLite
+- SQL
+- Power BI
+- DAX
+- Git
+- GitHub
+
+---
+
+# 🏢 Business Context
+
+**Departments**
+
+- Sales
+- Marketing
+- Operations
+- R&D
+- HR
+- IT
+
+**Categories**
+
+- Salaries
+- Marketing Spend
+- Travel
+- Software
+- Equipment
+- Other
+
+**Reporting Period**
+
+January – June 2026
+
+---
+
+# 📚 Lessons Learned
+
+This project strengthened practical FP&A and analytics skills, including:
+
+- Data validation before analysis
+- Documenting data-cleaning decisions
+- Building reusable SQL queries
+- Designing a star schema
+- Developing DAX measures
+- Creating interactive executive dashboards
+- Communicating financial insights through business-oriented reporting
